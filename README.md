@@ -4,9 +4,8 @@ N-gram models and perplexity, written with no dependencies, to answer a question
 
 **Léo Mégret**, MSc Computational Linguistics, Université Paris Cité
 
-> **Repository status, version 1.** This is the first step of work I am doing in
-> stages, each in its own folder. Only version 1 exists so far. I publish as I go
-> rather than once everything is finished.
+> **Repository status, version 2.** I am doing this work in stages, each in its
+> own folder. I publish as I go rather than once everything is finished.
 
 ---
 
@@ -25,58 +24,35 @@ in ten years.
 
 ---
 
-## What exists today
+## Published versions
 
-### Version 1, language models and perplexity
+| | Folder | Contents | Tests |
+|---|---|---|---:|
+| **1** | `1.multilingue_python_projet` | Language models and perplexity | 18 |
+| **2** | `2.multilingue_python_projet` | BLEU, implementing the metric then breaking it | 16 |
 
-| File | What I do in it |
-|---|---|
-| `src/corpus.py` | A parallel corpus of 40 sentences translated into five languages, French, English, Spanish, German and Turkish. Word and character segmentation with Unicode normalisation, type-token ratio, descriptive statistics. |
-| `src/ngrammes.py` | A complete n-gram model with three smoothing schemes, additive, backoff and interpolated Kneser-Ney. Out-of-vocabulary handling, perplexity, and the two methodological experiments. |
-| `tests/test_ngrammes.py` | 18 tests, including a check that Kneser-Ney does favour versatile words. |
-
-Academic origin. Lab 1 of multilingual NLP, *One model to rule them all*
-(Guillaume Wisniewski, M2).
+That is **34 tests** in total. Each folder contains everything the previous
+one had, plus one step.
 
 ---
 
-## Running the code
+## Running the latest version
 
 ```bash
-cd 1.multilingue_python_projet
-python -m src.corpus
-python -m src.ngrammes
-python -m tests.test_ngrammes
+cd 2.multilingue_python_projet
+python -m src.bleu
+python -m tests.test_bleu
 ```
-
-No dependencies, not even NumPy. The corpus lives in the code.
-
----
-
-## What I take from this step
-
-**Turkish gets the best perplexity even though it is the hardest language in the
-corpus.** The reason is that it sends 80% of its words to the out-of-vocabulary
-bucket, and those words do not count towards the metric. A perplexity can
-therefore reward abstention.
-
-That is what makes cross-language comparison illegitimate, and it is what I could
-not prove during the course.
-
-**A limitation I document rather than hide.** I segment every language with the
-same rule, deliberately, so that the only difference between my measurements comes
-from the languages themselves. That has a cost, French clitics such as `l'article`
-and German contractions such as `im` are not handled.
 
 ---
 
 ## What is still open
 
-I can now show that a perplexity does not compare across languages, and why.
+My measurements are about translations that have already been produced. How the
+text is made from the model's probabilities is outside my scope.
 
-What I do not know is whether the other metrics in the field have the same flaw. I
-used several of them during my Master's without checking what they actually
-measured.
+I suspect that choice weighs as much as the model itself, and I have nothing to
+check it with.
 
 ---
 
@@ -99,6 +75,8 @@ was wrong or incomplete, I say so and give the correct one.
 expected, I write down what I found.
 
 **The code is commented in French.**
+
+---
 
 ---
 

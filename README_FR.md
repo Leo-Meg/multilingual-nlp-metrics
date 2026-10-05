@@ -4,9 +4,8 @@ Modèles n-grammes et perplexité, écrits sans dépendance, pour répondre à u
 
 **Léo Mégret**, Master Linguistique Informatique, Université Paris Cité
 
-> **État du dépôt, version 1.** C'est la première étape d'un travail que je mène
-> par étapes, chacune dans son propre dossier. Seule la version 1 existe à ce
-> jour. Je publie au fur et à mesure plutôt qu'une fois tout terminé.
+> **État du dépôt, version 2.** Je mène ce travail par étapes, chacune dans son
+> propre dossier. Je publie au fur et à mesure plutôt qu'une fois tout terminé.
 
 ---
 
@@ -25,59 +24,35 @@ ordinateur portable et reste exécutable dans dix ans.
 
 ---
 
-## Ce qui existe aujourd'hui
+## Les versions publiées
 
-### Version 1, modèles de langue et perplexité
+| | Dossier | Contenu | Tests |
+|---|---|---|---:|
+| **1** | `1.multilingue_python_projet` | Modèles de langue et perplexité | 18 |
+| **2** | `2.multilingue_python_projet` | BLEU, implémenter la métrique puis la casser | 16 |
 
-| Fichier | Ce que j'y fais |
-|---|---|
-| `src/corpus.py` | Corpus parallèle de 40 phrases traduites en cinq langues, français, anglais, espagnol, allemand et turc. Segmentation en mots et en caractères avec normalisation Unicode, rapport type-occurrence, statistiques descriptives. |
-| `src/ngrammes.py` | Modèle n-gramme complet avec trois lissages, additif, repli et Kneser-Ney interpolé. Gestion du hors-vocabulaire, perplexité, et les deux expériences méthodologiques. |
-| `tests/test_ngrammes.py` | 18 tests, dont la vérification que Kneser-Ney privilégie bien les mots polyvalents. |
-
-Origine universitaire. TP n°1 de NLP multilingue, *One model to rule them all*
-(Guillaume Wisniewski, M2).
+Soit **34 tests** au total. Chaque dossier contient tout le contenu du
+précédent, plus une étape.
 
 ---
 
-## Lancer le code
+## Lancer la dernière version
 
 ```bash
-cd 1.multilingue_python_projet
-python -m src.corpus
-python -m src.ngrammes
-python -m tests.test_ngrammes
+cd 2.multilingue_python_projet
+python -m src.bleu
+python -m tests.test_bleu
 ```
-
-Aucune dépendance, pas même NumPy. Le corpus est dans le code.
-
----
-
-## Ce que je retiens de cette étape
-
-**Le turc obtient la meilleure perplexité alors que c'est la langue la plus
-difficile du corpus.** La raison est qu'il renvoie 80 % de ses mots au
-hors-vocabulaire, et que ces mots ne comptent pas dans la métrique. Une perplexité
-peut donc récompenser une abstention.
-
-C'est ce qui rend la comparaison entre langues illégitime, et c'est ce que je
-n'avais pas su démontrer en cours.
-
-**Une limite que je documente plutôt que de la masquer.** Je segmente toutes les
-langues avec la même règle, délibérément, pour que la seule différence entre mes
-mesures vienne des langues. Cela a un coût, les clitiques du français comme
-`l'article` et les contractions de l'allemand comme `im` ne sont pas traités.
 
 ---
 
 ## Ce qui reste ouvert
 
-Je sais maintenant montrer qu'une perplexité ne se compare pas d'une langue à
-l'autre, et pourquoi.
+Mes mesures portent sur des traductions déjà produites. La façon dont le texte
+est fabriqué à partir des probabilités du modèle reste hors de mon champ.
 
-Ce que je ne sais pas, c'est si les autres métriques du domaine souffrent du même
-défaut. J'en ai utilisé plusieurs pendant le master sans vérifier ce qu'elles
-mesuraient réellement.
+Je soupçonne que ce choix pèse autant que le modèle lui-même, et je n'ai rien
+pour le vérifier.
 
 ---
 
@@ -101,6 +76,8 @@ correct.
 que j'attendais, j'écris ce que j'ai trouvé.
 
 **Le code est commenté en français.**
+
+---
 
 ---
 
