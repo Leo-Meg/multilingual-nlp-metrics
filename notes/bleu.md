@@ -1,13 +1,15 @@
-# Version 2, BLEU. Implémenter la métrique, puis la casser
+# BLEU. Implémenter la métrique, puis la casser
 
-> **Où j'en suis.** La version 1 a montré qu'une perplexité ne se compare pas.
-> Cette version s'attaque à la métrique la plus utilisée du TAL, et répare
+> Étape 2 sur 3 du dépôt.
+
+> **Où j'en suis.** La étape 1 a montré qu'une perplexité ne se compare pas.
+> Cette étape s'attaque à la métrique la plus utilisée du TAL, et répare
 > quelque chose, les trois questions les plus importantes de mon TP de M2
 > étaient restées **sans réponse écrite** dans mon rendu.
 
 ---
 
-## Nouveautés par rapport à la version 1
+## Nouveautés par rapport à l'étape 1
 
 | Fichier | Ce que j'ajoute |
 |---|---|
@@ -152,7 +154,7 @@ partiel.
 C'est pour cela que BLEU **sous-évalue systématiquement** les systèmes sur les
 langues morphologiquement riches, une seule désinence fausse coûte le mot
 entier. Sur du turc ou du finnois, l'effet est massif, et c'est le lien direct
-avec ce que j'ai mesuré à la version 1.
+avec ce que j'ai mesuré à l'étape 1.
 
 chrF a deux autres avantages, elle utilise le **rappel** (donc pas besoin de
 pénalité de brièveté artificielle) et elle ne dépend d'**aucune tokenisation**.

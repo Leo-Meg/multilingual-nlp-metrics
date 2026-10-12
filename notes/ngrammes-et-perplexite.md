@@ -1,4 +1,6 @@
-# Version 1, modèles de langue et perplexité
+# Modèles de langue et perplexité
+
+> Étape 1 sur 3 du dépôt.
 
 > **Où j'en suis.** Je pars du TP qui ouvrait mon cours de NLP multilingue,
 > entraîner un modèle de langue par langue et comparer les perplexités. La
@@ -8,7 +10,7 @@
 
 ---
 
-## Ce que contient cette version
+## Ce que contient cette étape
 
 | Fichier | Ce que j'y fais |
 |---|---|
